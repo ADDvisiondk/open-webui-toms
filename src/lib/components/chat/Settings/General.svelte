@@ -15,8 +15,8 @@
 	export let getModels: Function;
 
 	// General
-	let themes = ['dark', 'light', 'rose-pine dark', 'rose-pine-dawn light', 'oled-dark'];
-	let selectedTheme = 'system';
+	let themes = ['dark', 'light', 'rose-pine dark', 'rose-pine-dawn light', 'oled-dark', 'toms'];
+	let selectedTheme = 'toms';
 
 	let languages: Awaited<ReturnType<typeof getLanguages>> = [];
 	let lang = $i18n.language;
@@ -205,7 +205,9 @@
 							? '#000000'
 							: _theme === 'her'
 								? '#983724'
-								: '#ffffff'
+								: _theme === 'toms'
+									? '#512f2e'
+									: '#ffffff'
 				);
 			}
 		}
@@ -220,6 +222,29 @@
 			document.documentElement.style.setProperty('--color-gray-900', '#000000');
 			document.documentElement.style.setProperty('--color-gray-950', '#000000');
 			document.documentElement.classList.add('dark');
+		}
+
+		if (_theme === 'toms') {
+			document.documentElement.style.setProperty('--color-gray-50', '#ffffff');
+			document.documentElement.style.setProperty('--color-gray-100', '#f5f4f1');
+			document.documentElement.style.setProperty('--color-gray-200', '#d6d2c4');
+			document.documentElement.style.setProperty('--color-gray-300', '#c4bfb0');
+			document.documentElement.style.setProperty('--color-gray-400', '#a39889');
+			document.documentElement.style.setProperty('--color-gray-500', '#8a7f6d');
+			document.documentElement.style.setProperty('--color-gray-600', '#6b5f4d');
+			document.documentElement.style.setProperty('--color-gray-700', '#5a4e3d');
+			document.documentElement.style.setProperty('--color-gray-800', '#512f2e');
+			document.documentElement.style.setProperty('--color-gray-850', '#472923');
+			document.documentElement.style.setProperty('--color-gray-900', '#3d221e');
+			document.documentElement.style.setProperty('--color-gray-950', '#2d1815');
+			
+			// Set Toms brand accent colors
+			document.documentElement.style.setProperty('--color-accent-500', '#ee2a24');
+			document.documentElement.style.setProperty('--color-accent-600', '#d41f19');
+			document.documentElement.style.setProperty('--color-accent-700', '#b91a15');
+			
+			document.documentElement.classList.add('dark');
+			document.documentElement.classList.add('toms');
 		}
 
 		console.log(_theme);
@@ -251,6 +276,7 @@
 						<option value="oled-dark">🌃 {$i18n.t('OLED Dark')}</option>
 						<option value="light">☀️ {$i18n.t('Light')}</option>
 						<option value="her">🌷 Her</option>
+						<option value="toms">🍫 Toms</option>
 						<!-- <option value="rose-pine dark">🪻 {$i18n.t('Rosé Pine')}</option>
 						<option value="rose-pine-dawn light">🌷 {$i18n.t('Rosé Pine Dawn')}</option> -->
 					</select>

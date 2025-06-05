@@ -115,6 +115,30 @@ li p {
 	border-color: rgba(0, 0, 0, var(--tw-border-opacity));
 }
 
+/* Toms theme specific styles */
+html.toms {
+	/* Use Toms red for accent elements */
+}
+
+html.toms button:hover,
+html.toms .bg-accent-500 {
+	background-color: var(--color-accent-500) !important;
+}
+
+html.toms .text-accent-500,
+html.toms .text-primary {
+	color: var(--color-accent-500) !important;
+}
+
+html.toms .border-accent-500 {
+	border-color: var(--color-accent-500) !important;
+}
+
+html.toms ::-webkit-scrollbar-thumb {
+	background-color: rgba(238, 42, 36, 0.6); /* Toms red with transparency */
+	border-color: rgba(81, 47, 46, var(--tw-border-opacity));
+}
+
 ::-webkit-scrollbar {
 	height: 0.6rem;
 	width: 0.4rem;

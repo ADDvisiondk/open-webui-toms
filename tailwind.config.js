@@ -21,6 +21,11 @@ export default {
 					850: 'var(--color-gray-850, #262626)',
 					900: 'var(--color-gray-900, #171717)',
 					950: 'var(--color-gray-950, #0d0d0d)'
+				},
+				accent: {
+					500: 'var(--color-accent-500, #3b82f6)',
+					600: 'var(--color-accent-600, #2563eb)',
+					700: 'var(--color-accent-700, #1d4ed8)'
 				}
 			},
 			typography: {

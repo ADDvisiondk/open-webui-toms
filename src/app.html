@@ -38,7 +38,7 @@
 				const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 				if (!localStorage?.theme) {
-					localStorage.theme = 'system';
+					localStorage.theme = 'toms';
 				}
 
 				if (localStorage.theme === 'system') {
@@ -58,6 +58,25 @@
 					document.documentElement.classList.add('dark');
 					document.documentElement.classList.add('her');
 					metaThemeColorTag.setAttribute('content', '#983724');
+				} else if (localStorage.theme === 'toms') {
+					document.documentElement.style.setProperty('--color-gray-50', '#ffffff');
+					document.documentElement.style.setProperty('--color-gray-100', '#f5f4f1');
+					document.documentElement.style.setProperty('--color-gray-200', '#d6d2c4');
+					document.documentElement.style.setProperty('--color-gray-300', '#c4bfb0');
+					document.documentElement.style.setProperty('--color-gray-400', '#a39889');
+					document.documentElement.style.setProperty('--color-gray-500', '#8a7f6d');
+					document.documentElement.style.setProperty('--color-gray-600', '#6b5f4d');
+					document.documentElement.style.setProperty('--color-gray-700', '#5a4e3d');
+					document.documentElement.style.setProperty('--color-gray-800', '#512f2e');
+					document.documentElement.style.setProperty('--color-gray-850', '#472923');
+					document.documentElement.style.setProperty('--color-gray-900', '#3d221e');
+					document.documentElement.style.setProperty('--color-gray-950', '#2d1815');
+					document.documentElement.style.setProperty('--color-accent-500', '#ee2a24');
+					document.documentElement.style.setProperty('--color-accent-600', '#d41f19');
+					document.documentElement.style.setProperty('--color-accent-700', '#b91a15');
+					document.documentElement.classList.add('dark');
+					document.documentElement.classList.add('toms');
+					metaThemeColorTag.setAttribute('content', '#512f2e');
 				} else {
 					document.documentElement.classList.add('dark');
 					metaThemeColorTag.setAttribute('content', '#171717');
@@ -80,6 +99,13 @@
 				function setSplashImage() {
 					const logo = document.getElementById('logo');
 					const isDarkMode = document.documentElement.classList.contains('dark');
+					const isTomsTheme = document.documentElement.classList.contains('toms');
+
+					// Skip auto-filtering for Toms theme - let it use original colors
+					if (isTomsTheme) {
+						logo.style.filter = ''; // No filter for Toms
+						return;
+					}
 
 					if (isDarkMode) {
 						const darkImage = new Image();
@@ -204,6 +230,10 @@
 		background: #983724;
 	}
 
+	html.toms #splash-screen {
+		background: #512f2e;
+	}
+
 	#logo-her {
 		display: none;
 	}
@@ -223,6 +253,11 @@
 	html.her #logo-her {
 		display: block;
 		filter: invert(1);
+	}
+
+	html.toms #logo {
+		content: url('/static/tomslogo.png');
+		filter: none !important; /* Force no color filters */
 	}
 
 	html.her #progress-background {
